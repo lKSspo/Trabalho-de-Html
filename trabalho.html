@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meu Site</title>
+    <style>
+        
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .logo img {
+            max-width: 100%; 
+            max-height: 40px; 
+        }
+
+        .menu {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .menu li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo" onclick="window.location.href='URL_DA_PAGINA_INICIAL'">
+            <img src="https://i.imgur.com/IYG080c.jpeg" alt="Logo da Minha Loja">
+        </div>
+        <ul class="menu">
+            <li><a href="trabalhoGrid.html">Produtos</a></li>
+            <li><a href="#" onclick="mostrarPagina('cadastro')">Cadastro</a></li>
+            <li><a href="#" onclick="mostrarPagina('suporte')">Suporte</a></li>
+        </ul>
+    </header>
+
+    <!-- Restante do seu conteúdo aqui -->
+
+</body>
+</html>
+
+    <div>
+        <div class="page" id="cadastro">
+            <h1>Cadastro de Clientes</h1>
+            <button onclick="mostrarPagina('relatorio')">Relatório de Cadastro</button>
+            <form id="cadastroForm">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required><br><br>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone"><br><br>
+                <div class="button-container">
+                    <input type="button" value="Cadastrar" onclick="adicionarCadastro()">
+                </div>
+            </form>
+        </div>
+        <div class="page" id="relatorio">
+            <h1>Relatório de Cadastro</h1>
+            <table id="cadastroTable">
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                </tr>
+            </table>
+        </div>
+        <div class="page" id="suporte">
+            <h1>Suporte</h1>
+            <ul>
+                <li><a href="#" onclick="mostrarPagina('sobreLoja')">Sobre a Loja</a></li>
+                <li><a href="#" onclick="mostrarPagina('duvidasFrequentes')">Dúvidas Frequentes</a></li>
+                <li><a href="#" onclick="mostrarPagina('faleConosco')">Fale Conosco</a></li>
+            </ul>
+        </div>
+        <div class="page" id="sobreLoja">
+            <h1>Sobre a Loja</h1>
+            <p>
+                Bem-vindo à nossa loja virtual! Somos dedicados a oferecer produtos de alta qualidade para nossos clientes.
+            </p>
+            <button onclick="mostrarPagina('suporte')">Voltar</button>
+        </div>
+        <div class="page" id="duvidasFrequentes">
+            <h1>Dúvidas Frequentes</h1>
+            <p>
+                Aqui estão algumas das perguntas mais frequentes que nossos clientes nos fazem.
+            </p>
+            <button onclick="mostrarPagina('suporte')">Voltar</button>
+        </div>
+        <div class="page" id="faleConosco">
+            <h1>Fale Conosco</h1>
+            <p>
+                Para entrar em contato conosco, envie um e-mail para <a href="mailto:contato@meusite.com">contato@meusite.com</a>.
+            </p>
+            <button onclick="mostrarPagina('suporte')">Voltar</button>
+        </div>
+    </div>
+
+    <script>
+        function adicionarCadastro() {
+            var nome = document.getElementById("nome").value;
+            var email = document.getElementById("email").value;
+            var telefone = document.getElementById("telefone").value;
+
+            var tabela = document.getElementById("cadastroTable");
+            var newRow = tabela.insertRow(-1);
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            cell1.innerHTML = nome;
+            cell2.innerHTML = email;
+            cell3.innerHTML = telefone;
+
+            
+            document.getElementById("nome").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("telefone").value = "";
+        }
+
+        function mostrarPagina(pagina) {
+            var pages = document.querySelectorAll('.page');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].style.display = 'none';
+            }
+            document.getElementById(pagina).style.display = 'block';
+        }
+
+        
+        mostrarPagina('cadastro');
+    </script>
+</body>
+</html>
